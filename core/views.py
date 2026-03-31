@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.views.decorators.http import require_POST
 from datetime import datetime
 
 from .models import Post
@@ -32,6 +33,7 @@ def login_view(request):
     return render(request, 'core/login.html')
 
 
+@require_POST
 def logout_view(request):
     """Handle user logout."""
     logout(request)
